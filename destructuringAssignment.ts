@@ -10,6 +10,11 @@ const bmw: CarType= {
     country: 'Germany',
 }
 
-function changeModel({car} : {car: CarType}):CarType {
-    return car
-}
+const {
+    model,
+    hp,
+    country
+} = bmw;
+
+console.log(model);
+console.log(country);
