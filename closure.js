@@ -1,3 +1,5 @@
+// Замыкания
+
 const inc = function () {
     counter = 0;
     return function () {
@@ -8,6 +10,7 @@ const inc = function () {
 // console.log(inc());
 // console.log(inc());
 
+// Каррирование
 function sum(firstNum) {
     return function (secondNum) {
         return firstNum + secondNum;
@@ -16,6 +19,7 @@ function sum(firstNum) {
 
 //console.log(sum(1)(2));
 
+// Паттерн "Модуль"
 const Module = (function () {
         let _privateValue = 1;
         return {
@@ -44,6 +48,8 @@ const Module = (function () {
 // Module.set(8);
 // Module.reset();
 
+
+//Рекурсия
 function toZero(num) {
     if (num > 0) {
         console.log(num);
@@ -56,6 +62,8 @@ function toZero(num) {
 
 // toZero(10);
 
+
+// Event Loop
 // const interval = setInterval(()=> console.log('AAA') , 200);
 // setTimeout(() => clearInterval(interval) ,2000);
 
@@ -80,11 +88,28 @@ function logD() {
 // Promise.resolve().then(logC);
 // logD();
 
+
+//Модификация прототипа Array
 const array = [1, 2, 3, 4, 5];
 
 Array.prototype.multBy = function (n) {
     console.log(this);
 }
 
-array.multBy();
+//array.multBy();
+
+//Сортировка пузырьком
+const bigArray = [4, 9, 9, 5, 2, 5, 4, 36, 6, 426, 0, 4, 8];
+
+for (let i = 0; i < bigArray.length; i++) {
+    for (let j = 0; j < bigArray.length; j++) {
+        if (bigArray[j + 1] < bigArray[j]) {
+            let temp = bigArray[j];
+            bigArray[j] = bigArray[j + 1];
+            bigArray[j + 1] = temp;
+        }
+    }
+}
+
+//console.log(bigArray);
 
