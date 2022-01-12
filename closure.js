@@ -113,3 +113,29 @@ for (let i = 0; i < bigArray.length; i++) {
 
 //console.log(bigArray);
 
+//Алгоритм быстрой сортировки
+const quickArray = [1,9,2,8,3,7,4,6,5,11,15,19,44,33,25];
+
+function quicksort(array){
+    if (array.length <=1) {
+        return array
+    }
+    let pivotIndex = Math.floor(array.length/2);
+    pivot = array[pivotIndex];
+    let less = [];
+    let grater = [];
+    for (let i = 0; i < array.length; i++) {
+        if(array[i] === pivot){
+            continue;
+        }
+        if(array[i] < pivot) {
+            less.push(array[i])
+        } else {
+            grater.push(array[i])
+        }
+    }
+    return [...quicksort(less), pivot, ...quicksort(grater)]
+}
+
+console.log(quicksort(quickArray));
+
