@@ -121,7 +121,7 @@ function quicksort(array){
         return array
     }
     let pivotIndex = Math.floor(array.length/2);
-    pivot = array[pivotIndex];
+    let pivot = array[pivotIndex];
     let less = [];
     let grater = [];
     for (let i = 0; i < array.length; i++) {
