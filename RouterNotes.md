@@ -6,7 +6,7 @@
     <div className="App">
         <BrowserRouter>
             <Routes>
-                <Route index element={<Home/>}/>
+                <Route path="/" element={<Home/>}/>
                 <Route path="profile" element={<Profile/>}/>
                 <Route path="login" element={<LogIn/>}/>
                 <Route path="sign-in" element={<SignIn/>}/>
