@@ -47,3 +47,18 @@
             })
     }
 ```
+## Get запрос с uri параметрами:
+
+```ecmascript 6
+     export const todolistAPI = {
+        getTodolists() {
+            return instance.get<Array<TodolistType>>('todo-lists', {params:
+                    {
+                        min: 3,
+                        max: 9,
+                        page: 1,
+                    }
+            }
+            });
+        },
+```
