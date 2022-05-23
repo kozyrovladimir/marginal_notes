@@ -47,6 +47,17 @@
             })
     }
 ```
+
+## Базовый get запрос:
+
+```ecmascript 6
+    axios.get('https://localhost').then(response => {
+            console.log(response.data);
+        }).catch(error=> {
+            console.log(error); 
+    });
+```
+
 ## Get запрос с uri параметрами:
 
 ```ecmascript 6
