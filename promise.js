@@ -3,10 +3,7 @@ let promise = new Promise(function(resolve, reject) {
 });
 
 async function f(){
-    // let a = await promise;
-    // console.log(a);
-
-    promise.then(a => console.log(a));
+        promise.then(a => console.log(a));
 };
 
 f();
