@@ -1,3 +1,5 @@
+//надо поправить тело фукнции foo, чтобы выводило в консоль: 0 1 2 3 4 ‘finished’, не убирая 1000 * Math.random().
+
 // function foo(cb) {
 //     for (var i = 0; i < 5; i++) {
 //         setTimeout(() => {
@@ -9,18 +11,36 @@
 //
 // foo(() => console.log('finished'));
 
+// моё решение с промисами:
 
-async function foo(cb) {
+// async function foo(cb) {
+//     for (var i = 0; i < 5; i++) {
+//         var promise = new Promise(function (resolve, reject){
+//             setTimeout(() => {
+//                 console.log(i);
+//                 resolve();
+//             }, 1000 * Math.random());
+//         });
+//         var s = await promise;
+//     }
+//     cb();
+// }
+//
+// foo(() => console.log('finished'));
+
+//решение через замыкания(типо правильное):
+
+function foo(cb) {
     for (var i = 0; i < 5; i++) {
-        var promise = new Promise(function (resolve, reject){
-            setTimeout(() => {
-                console.log(i);
-                resolve();
-            }, 1000 * Math.random());
-        });
-        var s = await promise;
+        setTimeout(function(local_i) {
+            return function() {
+                console.log(local_i);
+                if (local_i === 4) {
+                    cb();
+                }
+            }
+        }(i), 1000 * Math.random() + i * 1000);
     }
-    cb();
 }
 
 foo(() => console.log('finished'));
