@@ -28,19 +28,41 @@
 //
 // foo(() => console.log('finished'));
 
-//решение через замыкания(типо правильное):
+//решение через замыкания(тоже не совсем правильное):
+
+// function foo(cb) {
+//     for (var i = 0; i < 5; i++) {
+//         setTimeout(function(local_i) {
+//             return function() {
+//                 console.log(local_i);
+//                 if (local_i === 4) {
+//                     cb();
+//                 }
+//             }
+//         }(i), 1000 * Math.random() + i * 1000);
+//     }
+// }
+//
+// foo(() => console.log('finished'));
+
 
 function foo(cb) {
+    var promises = [];
+
     for (var i = 0; i < 5; i++) {
-        setTimeout(function(local_i) {
-            return function() {
-                console.log(local_i);
-                if (local_i === 4) {
-                    cb();
+        var promise = new Promise(function (resolve) {
+            setTimeout(function (local_i) {
+                return function () {
+                    console.log(local_i);
+                    resolve();
                 }
-            }
-        }(i), 1000 * Math.random() + i * 1000);
+            }(i), 1000 * Math.random());
+        });
+        promises.push(promise);
     }
+    Promise.all(promises).then(() => {
+        cb();
+    });
 }
 
 foo(() => console.log('finished'));
