@@ -4,7 +4,6 @@ let targetNum = 9;
 let twoSum = function(nums, target) {
     let firstElementIndex;
     let secondElementIndex;
-
     for (let i = 0; i < nums.length; i++) {
         nums.map(function (value ,index) {
             if (i =! index) {
